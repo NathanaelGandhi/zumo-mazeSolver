@@ -15,9 +15,13 @@ ZumoReflectanceSensorArray reflectanceSensors;
 
 int lastError = 0;
 const int MAX_SPEED = 400;
+//Allocates the pins for the reflectance sensor
 byte pins[]={5,A2,A0,11,A5};
 
+//----------------------NOTES----------------------//
 //motors.setSpeeds(leftSpeed, rightSpeed); //controls each wheel with 400 max and -400 reverse
+
+//-------------------------------------------------//
 
 //Runs once on arduino startup
 void setup() {
@@ -31,7 +35,7 @@ void setup() {
 //Main program loop
 void loop() {
   Serial.println("LET ME LOOSE");
-  callibrate();
+  calibrateReflectanceSensor();
   Serial.println("Calibration Done");
   pinMode(TRIG,OUTPUT);
   pinMode(ECHO,INPUT);
@@ -103,12 +107,15 @@ int getDistance(){
   return distance;
 }
 
-void callibrate(){
+//Calibrates the Relectance Sensor
+void calibrateReflectanceSensor(){
   for(int i=0;i<80;i++)
   {
     if((i>10&&i<=30)||(i>50&&i<=70))
+      //turn left
       motors.setSpeeds(-200,200);
     else
+      //turn right
       motors.setSpeeds(200,-200);
     reflectanceSensors.calibrate();
     delay(20);

@@ -1,8 +1,9 @@
 # zumo-mazeSolver
 Aim: 
-1) Get a Zumo to solve a maze
-2) Calculate the shortest route from start
-3) Complete the mapped maze in the shortest time possible
+1) Get a Zumo to solve a maze (start>finish)
+2) Return home (finish>start)
+3) Calculate the shortest route from start
+4) Complete the mapped maze in the shortest time possible
 
 Designed to be run on a "Zumo" using an "Arduino Uno".
 
